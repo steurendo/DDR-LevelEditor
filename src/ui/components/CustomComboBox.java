@@ -1,3 +1,5 @@
+package ui.components;
+
 import java.util.*;
 
 import javax.swing.DefaultComboBoxModel;

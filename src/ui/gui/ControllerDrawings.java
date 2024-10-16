@@ -1,3 +1,5 @@
+package ui.gui;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -28,7 +30,7 @@ public class ControllerDrawings
                         view.redrawSelectedTiles();
                     }
                     try {
-                        sleep(5);
+                        Thread.sleep(5);
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
                     }
@@ -77,7 +79,7 @@ public class ControllerDrawings
                         }
                     }
 					try {
-						sleep(5);
+						Thread.sleep(5);
 					} catch (InterruptedException e) {
 						throw new RuntimeException(e);
 					}

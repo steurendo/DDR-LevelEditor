@@ -1,3 +1,5 @@
+package ui.gui;
+
 public class MouseThread extends Thread {
     int input;
 

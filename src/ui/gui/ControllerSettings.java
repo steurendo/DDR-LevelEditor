@@ -1,3 +1,5 @@
+package ui.gui;
+
 import java.awt.event.*;
 import javax.swing.*;
 

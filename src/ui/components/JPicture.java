@@ -1,3 +1,5 @@
+package ui.components;
+
 import java.awt.*;
 import java.awt.image.*;
 import java.io.*;
@@ -41,7 +43,7 @@ public class JPicture extends JComponent {
 
     public void setPicture(String filePath) {
         try {
-            picture = ImageIO.read(Objects.requireNonNull(this.getClass().getResourceAsStream(filePath)));
+            picture = ImageIO.read(Objects.requireNonNull(this.getClass().getClassLoader().getResourceAsStream(filePath)));
         } catch (IOException e) {
             picture = null;
         }

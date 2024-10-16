@@ -1,3 +1,5 @@
+package ui.components;
+
 import javax.swing.*;
 import javax.swing.text.*;
 import java.io.Serial;

@@ -4,7 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9b40d893-bd48-4fc2-9b34-9417fe25fd6e" name="Changes" comment="First (working) commit" />
+    <list default="true" id="9b40d893-bd48-4fc2-9b34-9417fe25fd6e" name="Changes" comment="Code tidying">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Button.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/components/Button.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/gui/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ControllerDrawings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/gui/ControllerDrawings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ControllerForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/gui/ControllerForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ControllerSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/gui/ControllerSettings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CustomComboBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/components/CustomComboBox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CustomTreeView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/components/CustomTreeView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/JPicture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/components/JPicture.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LimitedTextField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/components/LimitedTextField.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MappedLevel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/gui/MappedLevel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/gui/Model.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MouseThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/gui/MouseThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/gui/View.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp.ddp" beforeDir="false" afterPath="$PROJECT_DIR$/temp.ddp" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -42,6 +60,7 @@
     "Application.Main.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "dart.analysis.tool.window.visible": "false",
     "git-widget-placeholder": "master",
@@ -96,7 +115,15 @@
       <option name="project" value="LOCAL" />
       <updated>1695385957423</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Code tidying">
+      <option name="closed" value="true" />
+      <created>1729065412442</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1729065412442</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -115,6 +142,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First (working) commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="First (working) commit" />
+    <MESSAGE value="Code tidying" />
+    <option name="LAST_COMMIT_MESSAGE" value="Code tidying" />
   </component>
 </project>

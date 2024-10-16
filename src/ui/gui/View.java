@@ -1,3 +1,8 @@
+package ui.gui;
+
+import ui.components.*;
+import ui.components.Button;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
@@ -9,7 +14,7 @@ import javax.swing.tree.*;
 
 public class View extends JFrame {
     @Serial
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
     private static final int SCROLLING_VALUE = 32;
 
     private final BufferedImage[][] tilemap;
@@ -46,10 +51,10 @@ public class View extends JFrame {
     private final JLabel labelLinkWarpzone;
     private final JLabel labelSpawnpointMode;
     private final JCheckBox checkboxSpawnpointMode;
-    private final Button buttonSet;
+    private final ui.components.Button buttonSet;
     private final Button buttonAdd;
-    private final Button buttonRemove;
-    private final Button buttonRemoveCurrent;
+    private final ui.components.Button buttonRemove;
+    private final ui.components.Button buttonRemoveCurrent;
     private final JTextField textWidth;
     private final CustomComboBox comboLinkedWarpzone;
     private int workingNodeIndex;
@@ -60,8 +65,8 @@ public class View extends JFrame {
         model = new Model();
         //CARICO LE IMMAGINI
         try {
-            tilemapPicture = ImageIO.read(this.getClass().getResourceAsStream("tilemap.png"));
-            spawnpointPicture = ImageIO.read(this.getClass().getResourceAsStream("spawnpoint.png"));
+            tilemapPicture = ImageIO.read(Objects.requireNonNull(this.getClass().getClassLoader().getResourceAsStream("tilemap.png")));
+            spawnpointPicture = ImageIO.read(Objects.requireNonNull(this.getClass().getClassLoader().getResourceAsStream("spawnpoint.png")));
         } catch (Exception e) {
             tilemapPicture = null;
             spawnpointPicture = null;
@@ -90,7 +95,7 @@ public class View extends JFrame {
         }
         setResizable(false);
         UIManager.put("Label.font", new Font("Arial", Font.PLAIN, 11));
-        UIManager.put("Button.font", new Font("Arial", Font.PLAIN, 11));
+        UIManager.put("ui.components.Button.font", new Font("Arial", Font.PLAIN, 11));
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         //COMPONENTI
@@ -159,16 +164,16 @@ public class View extends JFrame {
         checkboxSpawnpointMode = new JCheckBox();
         checkboxSpawnpointMode.setName("checkboxSpawnpointMode");
         checkboxSpawnpointMode.setBounds(825, 360, 20, 15);
-        buttonSet = new Button("Set");
+        buttonSet = new ui.components.Button("Set");
         buttonSet.setName("buttonLevelSet");
         buttonSet.setBounds(92, 23, 53, 20);
-        buttonAdd = new Button("+");
+        buttonAdd = new ui.components.Button("+");
         buttonAdd.setName("buttonLevelAdd");
         buttonAdd.setBounds(10, 50, 65, 20);
-        buttonRemove = new Button("-");
+        buttonRemove = new ui.components.Button("-");
         buttonRemove.setName("buttonLevelRemove");
         buttonRemove.setBounds(80, 50, 65, 20);
-        buttonRemoveCurrent = new Button("Remove current");
+        buttonRemoveCurrent = new ui.components.Button("Remove current");
         buttonRemoveCurrent.setName("buttonLevelRemoveCurrent");
         buttonRemoveCurrent.setBounds(10, 77, 135, 20);
         textWidth = new LimitedTextField();
@@ -287,12 +292,12 @@ public class View extends JFrame {
 
     //INIZIALIZZA GLI ARRAY DELLE IMMAGINI
     public void startupImages() {
-        imageLevels = new ArrayList<BufferedImage>();
+        imageLevels = new ArrayList<>();
         for (int i = 0; i < model.getLevelsCount(); i++) {
             imageLevels.add(null);
             createLevelImage(i);
         }
-        imageWarpzones = new ArrayList<BufferedImage>();
+        imageWarpzones = new ArrayList<>();
         for (int i = 0; i < model.getWarpzonesCount(); i++) {
             imageWarpzones.add(null);
             createWarpzoneImage(i);

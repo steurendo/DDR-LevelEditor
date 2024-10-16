@@ -1,3 +1,5 @@
+package ui.components;
+
 import java.awt.*;
 import java.io.Serial;
 import javax.swing.*;
