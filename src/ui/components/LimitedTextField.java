@@ -6,13 +6,13 @@ import java.io.Serial;
 
 public class LimitedTextField extends JTextField {
     @Serial
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
     @Override
     protected Document createDefaultModel() {
         return new PlainDocument() {
             @Serial
-			private static final long serialVersionUID = 1L;
+            private static final long serialVersionUID = 1L;
 
             @Override
             public void insertString(int offset, String str, AttributeSet attr) throws BadLocationException {

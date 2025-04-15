@@ -24,16 +24,8 @@ public class JPicture extends JComponent {
         }
     }
 
-    public JPicture(int x, int y, int width, int height) {
-        this("", x, y, width, height);
-    }
-
     public JPicture() {
         this("", 0, 0, 0, 0);
-    }
-
-    public BufferedImage getPicture() {
-        return picture;
     }
 
     public void setPicture(BufferedImage picture) {
