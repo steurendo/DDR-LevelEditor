@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9b40d893-bd48-4fc2-9b34-9417fe25fd6e" name="Changes" comment="Packaging">
+    <list default="true" id="9b40d893-bd48-4fc2-9b34-9417fe25fd6e" name="Changes" comment="Added resource loader, edited base levels">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/base.ddp" beforeDir="false" afterPath="$PROJECT_DIR$/base.ddp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/base.ddp" beforeDir="false" afterPath="$PROJECT_DIR$/res/base.ddp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/gui/ControllerSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/gui/ControllerSettings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/gui/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/gui/View.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/temp.ddp" beforeDir="false" afterPath="$PROJECT_DIR$/temp.ddp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -37,6 +37,9 @@
   &quot;associatedIndex&quot;: 2
 }</component>
   <component name="ProjectId" id="2GERfJma5ePf3FFNfExE6RR5OMr" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -62,6 +65,14 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\steur\IdeaProjects\DDR-LevelEditor\res" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="utils" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
@@ -118,7 +129,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729065960435</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Added resource loader, edited base levels">
+      <option name="closed" value="true" />
+      <created>1755102028453</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1755102028453</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -139,6 +158,7 @@
     <MESSAGE value="First (working) commit" />
     <MESSAGE value="Code tidying" />
     <MESSAGE value="Packaging" />
-    <option name="LAST_COMMIT_MESSAGE" value="Packaging" />
+    <MESSAGE value="Added resource loader, edited base levels" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added resource loader, edited base levels" />
   </component>
 </project>

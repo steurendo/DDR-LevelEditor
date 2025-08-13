@@ -22,10 +22,10 @@ public class ControllerSettings
 
     private void add() {
         if (view.getWorkingNodeIndex() == 1) {
-            view.addLevelImage();
+            view.addLevel();
             model.addLevel();
         } else if (view.getWorkingNodeIndex() == 2) {
-            view.addWarpzoneImage();
+            view.addWarpzone();
             model.addWarpzone();
         }
     }
@@ -36,13 +36,13 @@ public class ControllerSettings
                 if (!view.askToRemove())
                     return;
 
-            view.removeLevelImage();
+            view.removeLevel();
             model.removeLevel();
         } else if (view.getWorkingNodeIndex() == 2) {
             if (model.isWarpzoneInitialized(model.getWarpzonesCount() - 1))
                 if (!view.askToRemove())
                     return;
-            view.removeWarpzoneImage();
+            view.removeWarpzone();
             model.removeWarpzone();
         }
     }
@@ -50,12 +50,12 @@ public class ControllerSettings
     private void removeCurrent() {
         if (view.getWorkingNodeIndex() == 1) {
             if (view.askToRemoveCurrentLevel()) {
-                view.removeLevelImage(model.getCurrentLevel());
+                view.removeLevel(model.getCurrentLevel());
                 model.removeCurrentLevel();
             }
         } else if (view.getWorkingNodeIndex() == 2) {
             if (view.askToRemoveCurrentLevel()) {
-                view.removeWarpzoneImage(model.getCurrentWarpzone());
+                view.removeWarpzone(model.getCurrentWarpzone());
                 model.removeCurrentWarpzone();
             }
         }

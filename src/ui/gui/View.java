@@ -11,7 +11,6 @@ import java.util.*;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import javax.swing.tree.*;
 
 public class View extends JFrame {
     @Serial
@@ -52,10 +51,10 @@ public class View extends JFrame {
     private final JLabel labelLinkWarpzone;
     private final JLabel labelSpawnpointMode;
     private final JCheckBox checkboxSpawnpointMode;
-    private final ui.components.Button buttonSet;
+    private final Button buttonSet;
     private final Button buttonAdd;
-    private final ui.components.Button buttonRemove;
-    private final ui.components.Button buttonRemoveCurrent;
+    private final Button buttonRemove;
+    private final Button buttonRemoveCurrent;
     private final JTextField textWidth;
     private final CustomComboBox comboLinkedWarpzone;
     private int workingNodeIndex;
@@ -88,7 +87,7 @@ public class View extends JFrame {
 
         //FORM
         setTitle("Dangerous Dave - Reloaded [Level Editor]");
-        setSize(1100, 445);
+        setSize(1100, 460);
         try {
             setIconImage(ImageIO.read(ResourceLoader.load(this, "icon.png")));
         } catch (Exception e) {
@@ -157,7 +156,7 @@ public class View extends JFrame {
         labelWidth.setBounds(10, 25, 50, 15);
         labelLinkWarpzone = new JLabel("Link warpzone");
         labelLinkWarpzone.setBounds(10, 105, 100, 15);
-        labelLinkWarpzone.setVisible(false);
+//        labelLinkWarpzone.setVisible(false);
         labelCurrentLevel = new JLabel("Current level: none");
         labelCurrentLevel.setBounds(825, 388, 200, 15);
         labelSpawnpointMode = new JLabel("Spawnpoint mode");
@@ -182,7 +181,7 @@ public class View extends JFrame {
         comboLinkedWarpzone = new CustomComboBox();
         comboLinkedWarpzone.setName("comboLinkedWarpzone");
         comboLinkedWarpzone.setBounds(100, 102, 45, 20);
-        comboLinkedWarpzone.setVisible(false);
+//        comboLinkedWarpzone.setVisible(false);
 
         //LISTENER
         this.addWindowListener(controllerForm);
@@ -237,6 +236,7 @@ public class View extends JFrame {
         add(labelSpawnpointMode);
         add(checkboxSpawnpointMode);
         add(new JLabel());
+        buildTreeView();
         update();
     }
 
@@ -249,7 +249,6 @@ public class View extends JFrame {
     }
 
     public void update() {
-        buildTreeView();
         adjustSettings();
         setLevelIndicator();
         redrawLevel();
@@ -497,28 +496,32 @@ public class View extends JFrame {
     }
 
     //OPERAZIONI CON LE IMMAGINI DEI LIVELLI
-    public void addLevelImage() {
+    public void addLevel() {
         imageLevels.add(null);
+        treeLevels.addLevel();
     }
 
-    public void removeLevelImage(int index) {
+    public void removeLevel(int index) {
         imageLevels.remove(index);
+        treeLevels.removeLevel();
     }
 
-    public void removeLevelImage() {
-        removeLevelImage(imageLevels.size() - 1);
+    public void removeLevel() {
+        removeLevel(imageLevels.size() - 1);
     }
 
-    public void addWarpzoneImage() {
+    public void addWarpzone() {
         imageWarpzones.add(null);
+        treeLevels.addWarpzone();
     }
 
-    public void removeWarpzoneImage(int index) {
+    public void removeWarpzone(int index) {
         imageWarpzones.remove(index);
+        treeLevels.removeWarpzone();
     }
 
-    public void removeWarpzoneImage() {
-        imageWarpzones.removeLast();
+    public void removeWarpzone() {
+        removeWarpzone(imageWarpzones.size() - 1);
     }
 
     public void createLevelImage(int index) {
@@ -553,14 +556,10 @@ public class View extends JFrame {
 
     //RIDISEGNA IL DIAGRAMMA DEI LIVELLI
     private void buildTreeView() {
-        DefaultMutableTreeNode root, node;
-
-        root = new DefaultMutableTreeNode();
-        root.add(new DefaultMutableTreeNode("Levels"));
-        node = (DefaultMutableTreeNode) root.getChildAt(0);
-        for (int i = 1; i <= model.getLevelsCount(); i++)
-            node.add(new DefaultMutableTreeNode("Level " + i));
-        treeLevels.setModel(new DefaultTreeModel(root));
+        for (int i = 0; i < model.getLevelsCount(); i++)
+            treeLevels.addLevel();
+        for (int i = 0; i < model.getWarpzonesCount(); i++)
+            treeLevels.addWarpzone();
         for (int i = 0; i < treeLevels.getRowCount(); i++)
             treeLevels.expandRow(i);
     }
