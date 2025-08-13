@@ -5,27 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9b40d893-bd48-4fc2-9b34-9417fe25fd6e" name="Changes" comment="Packaging">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DDR-LevelEditor.iml" beforeDir="false" afterPath="$PROJECT_DIR$/DDR-LevelEditor.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/LICENSE" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/base.ddp" beforeDir="false" afterPath="$PROJECT_DIR$/base.ddp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/res/base.ddp" beforeDir="false" afterPath="$PROJECT_DIR$/res/base.ddp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/components/Button.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/components/Button.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/components/CustomComboBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/components/CustomComboBox.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/components/CustomTreeView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/components/CustomTreeView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/gui/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/gui/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/gui/ControllerDrawings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/gui/ControllerDrawings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/gui/ControllerSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/gui/ControllerSettings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/gui/MappedLevel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/gui/MappedLevel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/gui/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/gui/Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/gui/MouseThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/gui/MouseThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/gui/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/gui/View.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/temp.ddp" beforeDir="false" afterPath="$PROJECT_DIR$/temp.ddp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -42,12 +24,12 @@
     &quot;assignee&quot;: &quot;steurendo&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/steurendo/DDR-LevelEditor.git&quot;,
-    &quot;accountId&quot;: &quot;0f1a8895-04a5-4b90-9356-b6b279a95f64&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/steurendo/DDR-LevelEditor.git",
+    "accountId": "66a175cc-e8b2-4b32-934d-b32adacae0b7"
   }
-}</component>
+}]]></component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -55,7 +37,6 @@
   &quot;associatedIndex&quot;: 2
 }</component>
   <component name="ProjectId" id="2GERfJma5ePf3FFNfExE6RR5OMr" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -72,7 +53,7 @@
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/media/steurendo/Frog/Programmazione/Java/IntelliJ/FractalsGL",
+    "last_opened_file_path": "C:/Users/steur/IdeaProjects/DDR-LevelEditor/res",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.2",

@@ -2,6 +2,7 @@ package ui.gui;
 
 import ui.components.*;
 import ui.components.Button;
+import utils.ResourceLoader;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -89,7 +90,7 @@ public class View extends JFrame {
         setTitle("Dangerous Dave - Reloaded [Level Editor]");
         setSize(1100, 445);
         try {
-            setIconImage(ImageIO.read(Objects.requireNonNull(this.getClass().getResourceAsStream("icon.png"))));
+            setIconImage(ImageIO.read(ResourceLoader.load(this, "icon.png")));
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
