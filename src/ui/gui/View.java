@@ -256,6 +256,10 @@ public class View extends JFrame {
         setScrollBar();
     }
 
+    public void resetScrollBar() {
+        scrollLevel.setValue(0);
+    }
+
     //RITORNA VERO O FALSO SE SI STA SETTANDO IL PUNTO DI SPAWN
     public boolean getSpawnpointMode() {
         return checkboxSpawnpointMode.isSelected();

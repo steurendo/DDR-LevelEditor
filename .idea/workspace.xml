@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9b40d893-bd48-4fc2-9b34-9417fe25fd6e" name="Changes" comment="Added resource loader, edited base levels">
+    <list default="true" id="9b40d893-bd48-4fc2-9b34-9417fe25fd6e" name="Changes" comment="Adjusted base levels">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/base.ddp" beforeDir="false" afterPath="$PROJECT_DIR$/base.ddp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/base.ddp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/res/base.ddp" beforeDir="false" afterPath="$PROJECT_DIR$/res/base.ddp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp.ddp" beforeDir="false" afterPath="$PROJECT_DIR$/temp.ddp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/gui/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/gui/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/gui/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/gui/View.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,7 +28,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/steurendo/DDR-LevelEditor.git&quot;,
-    &quot;accountId&quot;: &quot;66a175cc-e8b2-4b32-934d-b32adacae0b7&quot;
+    &quot;accountId&quot;: &quot;05485157-4743-47b0-8807-4df9bcbb81e1&quot;
   }
 }</component>
   <component name="MarkdownSettingsMigration">
@@ -68,6 +69,9 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\steur\IdeaProjects\DDR-LevelEditor\res" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/res" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="utils" />
@@ -137,7 +141,15 @@
       <option name="project" value="LOCAL" />
       <updated>1755102028453</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Adjusted base levels">
+      <option name="closed" value="true" />
+      <created>1755534039188</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1755534039188</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -159,6 +171,7 @@
     <MESSAGE value="Code tidying" />
     <MESSAGE value="Packaging" />
     <MESSAGE value="Added resource loader, edited base levels" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added resource loader, edited base levels" />
+    <MESSAGE value="Adjusted base levels" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adjusted base levels" />
   </component>
 </project>

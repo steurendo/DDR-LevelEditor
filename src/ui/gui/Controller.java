@@ -144,6 +144,7 @@ public class Controller
                     if (!node.getUserObject().equals("Levels") && !node.getUserObject().equals("Warpzones")) {
                         setLevel(node);
                         view.update();
+                        view.resetScrollBar();
                     }
         }
     }
