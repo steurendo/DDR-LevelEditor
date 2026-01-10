@@ -59,7 +59,7 @@ public class Controller
             } else if (chose == -1) return; // L'utente ha scelto di annullare
         }
         if (baseProject)
-            model.openProject(new InputStreamReader(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("base.ddp"))));
+            model.openProject(new BufferedReader(new InputStreamReader(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("base.ddp")))));
         else model.newEmptyProject();
         view.startupImages();
         view.buildTreeView();
@@ -70,9 +70,13 @@ public class Controller
 
         fd = view.askOpenProject();
         if (fd != null) {
-            model.openProject(fd);
-            view.startupImages();
-            view.buildTreeView();
+            try {
+                model.openProject(new BufferedReader(new FileReader(fd)));
+                view.startupImages();
+                view.buildTreeView();
+            } catch (Exception e) {
+                System.out.println("openProject: " + e.getMessage());
+            }
         }
     }
 

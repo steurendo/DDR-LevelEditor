@@ -1,27 +1,31 @@
 package ui.gui;
 
+import utils.LevelUtils;
+
 import java.awt.Point;
 
 public class MappedLevel {
+    private int id;
     private Point[][] map;
     private int width;
     private Point spawnpoint;
     private int link;
 
-    public MappedLevel(int width) {
+    public MappedLevel() {
         int x, y;
 
+        id = LevelUtils.getNewId();
         map = new Point[300][10];
         for (x = 0; x < 300; x++)
             for (y = 0; y < 10; y++)
                 map[x][y] = new Point(0, 0);
-        this.width = width;
+        width = 20;
         spawnpoint = new Point(2, 8);
         link = -1;
     }
 
-    public MappedLevel() {
-        this(20);
+    public int getId() {
+        return id;
     }
 
     public Point[][] getMap() {
@@ -66,5 +70,14 @@ public class MappedLevel {
 
     public void setTile(Point tile, int locationX, int locationY) {
         map[locationX][locationY] = tile;
+    }
+
+    public MappedLevel clone() {
+        MappedLevel clonedLevel = new MappedLevel();
+        clonedLevel.map = map.clone();
+        clonedLevel.width = width;
+        clonedLevel.spawnpoint = new Point(spawnpoint.x, spawnpoint.y);
+        clonedLevel.link = link;
+        return clonedLevel;
     }
 }
