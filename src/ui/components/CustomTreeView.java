@@ -11,7 +11,10 @@ public class CustomTreeView extends JTree {
 
     public CustomTreeView() {
         super();
+        reset();
+    }
 
+    public void reset() {
         DefaultMutableTreeNode root;
 
         root = new DefaultMutableTreeNode();

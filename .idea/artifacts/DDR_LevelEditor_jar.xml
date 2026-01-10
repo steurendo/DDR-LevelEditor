@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="DDR-LevelEditor:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/DDR_LevelEditor_jar</output-path>
+    <root id="archive" name="DDR-LevelEditor_jar.jar">
+      <element id="module-output" name="DDR-LevelEditor" />
+    </root>
+  </artifact>
+</component>

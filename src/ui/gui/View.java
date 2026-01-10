@@ -559,7 +559,8 @@ public class View extends JFrame {
     }
 
     //RIDISEGNA IL DIAGRAMMA DEI LIVELLI
-    private void buildTreeView() {
+    public void buildTreeView() {
+        treeLevels.reset();
         for (int i = 0; i < model.getLevelsCount(); i++)
             treeLevels.addLevel();
         for (int i = 0; i < model.getWarpzonesCount(); i++)

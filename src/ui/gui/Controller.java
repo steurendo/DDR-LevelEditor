@@ -2,12 +2,17 @@ package ui.gui;
 
 import ui.components.CustomTreeView;
 
-import java.awt.event.*;
-import java.io.*;
-import java.util.Objects;
 import javax.swing.*;
-import javax.swing.event.*;
-import javax.swing.tree.*;
+import javax.swing.event.TreeSelectionEvent;
+import javax.swing.event.TreeSelectionListener;
+import javax.swing.tree.DefaultMutableTreeNode;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.io.File;
+import java.io.InputStreamReader;
+import java.util.Objects;
 
 public class Controller
         implements ActionListener, MouseListener, TreeSelectionListener {
@@ -38,30 +43,24 @@ public class Controller
         }
     }
 
-    private void newEmptyProject() {
-        if ((model.getLevelsCount() + model.getWarpzonesCount()) > 0) {
+    private void newProject(boolean baseProject) {
+        boolean askingToSave = (model.getLevelsCount() + model.getWarpzonesCount()) > 0;
+
+        if (askingToSave) {
             int chose;
 
             chose = view.askToSave();
             if (chose == 1) {
-                File fd;
-
-                fd = view.askSaveProject();
-                if (fd != null) {
-                    model.saveProject(fd);
-                    model.newEmptyProject();
-                    view.startupImages();
-                }
-            } else if (chose == 0) {
-                model.newEmptyProject();
-                view.startupImages();
-            }
+                File fd = view.askSaveProject();
+                if (fd == null) return; // L'utente ha cancellato l'operazione di salvataggio
+                model.saveProject(fd);
+            } else if (chose == -1) return; // L'utente ha scelto di annullare
         }
-    }
-
-    private void newBaseProject() {
-        model.openProject(new InputStreamReader(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("base.ddp"))));
+        if (baseProject)
+            model.openProject(new InputStreamReader(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("base.ddp"))));
+        else model.newEmptyProject();
         view.startupImages();
+        view.buildTreeView();
     }
 
     private void openProject() {
@@ -71,6 +70,7 @@ public class Controller
         if (fd != null) {
             model.openProject(fd);
             view.startupImages();
+            view.buildTreeView();
         }
     }
 
@@ -117,9 +117,9 @@ public class Controller
 
         source = (JComponent) e.getSource();
         if (source.getName().equals("menuItemEmpty"))
-            newEmptyProject();
+            newProject(false);
         else if (source.getName().equals("menuItemBase"))
-            newBaseProject();
+            newProject(true);
         else if (source.getName().equals("menuItemOpen"))
             openProject();
         else if (source.getName().equals("menuItemSave"))
