@@ -9,11 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9b40d893-bd48-4fc2-9b34-9417fe25fd6e" name="Changes" comment="Readme changes">
+    <list default="true" id="9b40d893-bd48-4fc2-9b34-9417fe25fd6e" name="Changes" comment="Fixed &quot;new project&quot; and &quot;new base project&quot; functionalities not updating the tree view.">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/components/CustomTreeView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/components/CustomTreeView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ui/gui/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/gui/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/gui/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/gui/View.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/gui/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/gui/Model.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/temp.ddp" beforeDir="false" afterPath="$PROJECT_DIR$/temp.ddp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -22,6 +22,11 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -50,33 +55,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;JAR Application.MainJar.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;S:/Programmazione/Java/IntelliJ/DDR-LevelEditor&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;Errors&quot;,
-    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "JAR Application.MainJar.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "transitions",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "S:/Programmazione/Java/IntelliJ/DDR-LevelEditor",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "Errors",
+    "show.migrate.to.gradle.popup": "false",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\steur\IdeaProjects\DDR-LevelEditor\res" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="S:\Programmazione\Java\IntelliJ\DDR-LevelEditor\res" />
       <recent name="$PROJECT_DIR$/res" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -181,7 +187,15 @@
       <option name="project" value="LOCAL" />
       <updated>1759351790267</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Fixed &quot;new project&quot; and &quot;new base project&quot; functionalities not updating the tree view.">
+      <option name="closed" value="true" />
+      <created>1768064369678</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1768064369678</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -206,6 +220,7 @@
     <MESSAGE value="Adjusted base levels" />
     <MESSAGE value="Adjusted base levels again" />
     <MESSAGE value="Readme changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Readme changes" />
+    <MESSAGE value="Fixed &quot;new project&quot; and &quot;new base project&quot; functionalities not updating the tree view." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed &quot;new project&quot; and &quot;new base project&quot; functionalities not updating the tree view." />
   </component>
 </project>

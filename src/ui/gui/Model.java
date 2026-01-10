@@ -390,6 +390,10 @@ public class Model {
 
             w = new BufferedWriter(new FileWriter(dst));
 
+            //CARICAMENTO TRANSIZIONI BASE
+            MappedLevel transitionLevel = readLevel(new BufferedReader(new InputStreamReader(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("transition-level.ddl")))));
+            MappedLevel transitionWarpzone = readLevel(new BufferedReader(new InputStreamReader(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("transition-warpzone.ddl")))));
+
             //HEADER
             w.write(crypt(levels.size()) + crypt(warpzones.size()));
 
@@ -414,39 +418,40 @@ public class Model {
             w.close();
         } catch (Exception e) {
             System.out.println("exportData: " + e.getMessage());
-
         }
-
     }
 
-    public void importLevel(File src) {
-        try {
-            int x, y;
-            BufferedReader r;
-            MappedLevel level;
-            String line;
-            String[] subLine, ssubLine;
+    private MappedLevel readLevel(BufferedReader reader) throws Exception {
+        int x, y;
+        BufferedReader r;
+        MappedLevel level;
+        String line;
+        String[] subLine, ssubLine;
 
-            r = new BufferedReader(new FileReader(src));
-
-            level = new MappedLevel();
-            line = r.readLine();
-            subLine = line.split(";");
-            level.setWidth(Integer.parseInt(subLine[0]));
-            level.setSpawnpoint(Integer.parseInt(subLine[1]), Integer.parseInt(subLine[2]));
-            level.setLink(Integer.parseInt(subLine[3]));
-            for (x = 0; x < level.getWidth(); x++) {
-                line = r.readLine();
-                subLine = line.split(" ");
-                for (y = 0; y < 10; y++) {
-                    ssubLine = subLine[y].split(";");
-                    level.setTile(new Point(Integer.parseInt(ssubLine[0]), Integer.parseInt(ssubLine[1])), x, y);
-                }
+        level = new MappedLevel();
+        line = reader.readLine();
+        subLine = line.split(";");
+        level.setWidth(Integer.parseInt(subLine[0]));
+        level.setSpawnpoint(Integer.parseInt(subLine[1]), Integer.parseInt(subLine[2]));
+        level.setLink(Integer.parseInt(subLine[3]));
+        for (x = 0; x < level.getWidth(); x++) {
+            line = reader.readLine();
+            subLine = line.split(" ");
+            for (y = 0; y < 10; y++) {
+                ssubLine = subLine[y].split(";");
+                level.setTile(new Point(Integer.parseInt(ssubLine[0]), Integer.parseInt(ssubLine[1])), x, y);
             }
-            if (state == 1)
-                levels.set(currentLevel + currentWarpzone + 1, level);
+        }
+        reader.close();
+        return level;
+    }
 
-            r.close();
+    public void importLevel(BufferedReader reader) {
+        try {
+            if (state == 1) {
+                MappedLevel importedLevel = readLevel(reader);
+                levels.set(currentLevel + currentWarpzone + 1, importedLevel);
+            }
         } catch (Exception e) {
             System.out.println("importLevel: " + e.getMessage());
         }
