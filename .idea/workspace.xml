@@ -9,19 +9,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9b40d893-bd48-4fc2-9b34-9417fe25fd6e" name="Changes" comment="Readme changes">
+    <list default="true" id="9b40d893-bd48-4fc2-9b34-9417fe25fd6e" name="Changes" comment="Progressed (to be tested)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/components/CustomTreeView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/components/CustomTreeView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/gui/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/gui/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/gui/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/gui/View.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp.ddp" beforeDir="false" afterPath="$PROJECT_DIR$/temp.ddp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/gui/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/gui/Model.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/LevelUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/LevelUtils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -30,12 +40,12 @@
     &quot;assignee&quot;: &quot;steurendo&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/steurendo/DDR-LevelEditor.git",
-    "accountId": "2a995aab-2370-4d5e-87a3-b6232a849d69"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/steurendo/DDR-LevelEditor.git&quot;,
+    &quot;accountId&quot;: &quot;2a995aab-2370-4d5e-87a3-b6232a849d69&quot;
   }
-}]]></component>
+}</component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -60,7 +70,7 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;transitions&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;S:/Programmazione/Java/IntelliJ/DDR-LevelEditor&quot;,
@@ -77,6 +87,7 @@
       <recent name="C:\Users\steur\IdeaProjects\DDR-LevelEditor\res" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="S:\Programmazione\Java\IntelliJ\DDR-LevelEditor\res" />
       <recent name="$PROJECT_DIR$/res" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -181,7 +192,31 @@
       <option name="project" value="LOCAL" />
       <updated>1759351790267</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Fixed &quot;new project&quot; and &quot;new base project&quot; functionalities not updating the tree view.">
+      <option name="closed" value="true" />
+      <created>1768064369678</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1768064369678</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Started to implement &quot;transition&quot; levels">
+      <option name="closed" value="true" />
+      <created>1768066377912</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1768066377912</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Progressed (to be tested)">
+      <option name="closed" value="true" />
+      <created>1768075323901</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1768075323901</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -206,6 +241,9 @@
     <MESSAGE value="Adjusted base levels" />
     <MESSAGE value="Adjusted base levels again" />
     <MESSAGE value="Readme changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Readme changes" />
+    <MESSAGE value="Fixed &quot;new project&quot; and &quot;new base project&quot; functionalities not updating the tree view." />
+    <MESSAGE value="Started to implement &quot;transition&quot; levels" />
+    <MESSAGE value="Progressed (to be tested)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Progressed (to be tested)" />
   </component>
 </project>

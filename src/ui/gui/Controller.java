@@ -10,7 +10,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.InputStreamReader;
 import java.util.Objects;
 
@@ -57,7 +59,7 @@ public class Controller
             } else if (chose == -1) return; // L'utente ha scelto di annullare
         }
         if (baseProject)
-            model.openProject(new InputStreamReader(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("base.ddp"))));
+            model.openProject(new BufferedReader(new InputStreamReader(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("base.ddp")))));
         else model.newEmptyProject();
         view.startupImages();
         view.buildTreeView();
@@ -68,9 +70,13 @@ public class Controller
 
         fd = view.askOpenProject();
         if (fd != null) {
-            model.openProject(fd);
-            view.startupImages();
-            view.buildTreeView();
+            try {
+                model.openProject(new BufferedReader(new FileReader(fd)));
+                view.startupImages();
+                view.buildTreeView();
+            } catch (Exception e) {
+                System.out.println("openProject: " + e.getMessage());
+            }
         }
     }
 
@@ -95,11 +101,15 @@ public class Controller
 
         fd = view.askImportLevel();
         if (fd != null) {
-            model.importLevel(fd);
-            if (model.getState() == 1)
-                view.createLevelImage(model.getCurrentLevel());
-            else if (model.getState() == 2)
-                view.createWarpzoneImage(model.getCurrentWarpzone());
+            try {
+                model.importLevel(new BufferedReader(new FileReader(fd)));
+                if (model.getState() == 1)
+                    view.createLevelImage(model.getCurrentLevel());
+                else if (model.getState() == 2)
+                    view.createWarpzoneImage(model.getCurrentWarpzone());
+            } catch (Exception e) {
+                System.out.println("importLevel: " + e.getMessage());
+            }
         }
     }
 

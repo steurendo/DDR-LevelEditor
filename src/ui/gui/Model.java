@@ -1,12 +1,13 @@
 package ui.gui;
 
+import utils.CryptUtils;
+import utils.LevelUtils;
+
 import java.awt.Point;
 import java.io.*;
 import java.util.*;
 
 public class Model {
-    private final static int LV = 1997;
-    private final static int PW = 94;
 
     private ArrayList<MappedLevel> levels;
     private ArrayList<MappedLevel> warpzones;
@@ -214,16 +215,14 @@ public class Model {
         state = 0;
     }
 
-    public void openProject(InputStreamReader src) {
+    public void openProject(BufferedReader r) {
         try {
             int i, x, y, levelsCount, warpzonesCount;
-            BufferedReader r;
             MappedLevel level;
             String line;
             String[] subLine, ssubLine;
 
             newEmptyProject();
-            r = new BufferedReader(src);
 
             //HEADER
             line = r.readLine();
@@ -231,11 +230,11 @@ public class Model {
             levelsCount = Integer.parseInt(subLine[0]);
             warpzonesCount = Integer.parseInt(subLine[1]);
 
-            //LEVELS
+            //LEVELS (<width>;<spawnpointX>;<spawnpointY>;<link>)
             for (i = 0; i < levelsCount; i++) {
-                level = new MappedLevel();
                 line = r.readLine();
                 subLine = line.split(";");
+                level = new MappedLevel();
                 level.setWidth(Integer.parseInt(subLine[0]));
                 level.setSpawnpoint(Integer.parseInt(subLine[1]), Integer.parseInt(subLine[2]));
                 level.setLink(Integer.parseInt(subLine[3]));
@@ -250,72 +249,11 @@ public class Model {
                 levels.add(level);
             }
 
-            //WARPZONES
+            //WARPZONES (<width>;<spawnpointX>;<spawnpointY>;<link>)
             for (i = 0; i < warpzonesCount; i++) {
-                level = new MappedLevel();
                 line = r.readLine();
                 subLine = line.split(";");
-                level.setWidth(Integer.parseInt(subLine[0]));
-                level.setSpawnpoint(Integer.parseInt(subLine[1]), Integer.parseInt(subLine[2]));
-                level.setLink(Integer.parseInt(subLine[3]));
-                for (x = 0; x < level.getWidth(); x++) {
-                    line = r.readLine();
-                    subLine = line.split(" ");
-                    for (y = 0; y < 10; y++) {
-                        ssubLine = subLine[y].split(";");
-                        level.setTile(new Point(Integer.parseInt(ssubLine[0]), Integer.parseInt(ssubLine[1])), x, y);
-                    }
-                }
-                warpzones.add(level);
-            }
-
-            r.close();
-        } catch (Exception e) {
-            System.out.println("openProject: " + e.getMessage());
-        }
-    }
-
-    public void openProject(File src) {
-        try {
-            int i, x, y, levelsCount, warpzonesCount;
-            BufferedReader r;
-            MappedLevel level;
-            String line;
-            String[] subLine, ssubLine;
-
-            newEmptyProject();
-            r = new BufferedReader(new FileReader(src));
-
-            //HEADER
-            line = r.readLine();
-            subLine = line.split(";");
-            levelsCount = Integer.parseInt(subLine[0]);
-            warpzonesCount = Integer.parseInt(subLine[1]);
-
-            //LEVELS
-            for (i = 0; i < levelsCount; i++) {
                 level = new MappedLevel();
-                line = r.readLine();
-                subLine = line.split(";");
-                level.setWidth(Integer.parseInt(subLine[0]));
-                level.setSpawnpoint(Integer.parseInt(subLine[1]), Integer.parseInt(subLine[2]));
-                level.setLink(Integer.parseInt(subLine[3]));
-                for (x = 0; x < level.getWidth(); x++) {
-                    line = r.readLine();
-                    subLine = line.split(" ");
-                    for (y = 0; y < 10; y++) {
-                        ssubLine = subLine[y].split(";");
-                        level.setTile(new Point(Integer.parseInt(ssubLine[0]), Integer.parseInt(ssubLine[1])), x, y);
-                    }
-                }
-                levels.add(level);
-            }
-
-            //WARPZONES
-            for (i = 0; i < warpzonesCount; i++) {
-                level = new MappedLevel();
-                line = r.readLine();
-                subLine = line.split(";");
                 level.setWidth(Integer.parseInt(subLine[0]));
                 level.setSpawnpoint(Integer.parseInt(subLine[1]), Integer.parseInt(subLine[2]));
                 level.setLink(Integer.parseInt(subLine[3]));
@@ -382,71 +320,84 @@ public class Model {
         }
     }
 
+    private MappedLevel createTransition(MappedLevel level, boolean warpzoneTransition) {
+        try {
+            if (warpzoneTransition)
+                return LevelUtils.readLevel(new BufferedReader(new InputStreamReader(
+                        Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("transition-warpzone.ddl")))));
+            return LevelUtils.readLevel(new BufferedReader(new InputStreamReader(
+                    Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("transition-level.ddl")))));
+        } catch (Exception e) {
+            System.out.println("createTransition: " + e.getMessage());
+        }
+        return new MappedLevel();
+    }
+
     public void exportData(File dst) {
         try {
-            int i, x, y;
+            int x, y, transitionToWarpzoneId;
             BufferedWriter w;
-            MappedLevel level;
+            MappedLevel level, warpzone;
 
             w = new BufferedWriter(new FileWriter(dst));
 
-            //HEADER
-            w.write(crypt(levels.size()) + crypt(warpzones.size()));
+            w.write(CryptUtils.crypt(levels.getFirst().getId()));
 
             //LEVELS
-            for (i = 0; i < levels.size(); i++) {
-                level = levels.get(i);
-                w.write(crypt(level.getWidth()) + crypt(level.getSpawnpoint().x + level.getWidth() * level.getSpawnpoint().y) + crypt(level.getLink()));
-                for (x = 0; x < level.getWidth(); x++)
-                    for (y = 0; y < 10; y++)
-                        w.write(crypt(level.getTile(x, y).x + 8 * level.getTile(x, y).y));
-            }
+            for (int levelIndex = 0, warpzoneIndex = 0; levelIndex < levels.size(); levelIndex++) {
+                transitionToWarpzoneId = -1;
+                level = levels.get(levelIndex);
+                if (level.getLink() != -1) {
+                    warpzone = warpzones.get(warpzoneIndex);
+                    MappedLevel transitionToWarpzone = createTransition(warpzone, true);
+                    MappedLevel transitionToLevel = createTransition(warpzone, false);
+                    transitionToWarpzoneId = transitionToWarpzone.getId();
 
-            //WARPZONES
-            for (i = warpzones.size() - 1; i >= 0; i--) {
-                level = warpzones.get(i);
-                w.write(crypt(level.getWidth()) + crypt(level.getSpawnpoint().x + level.getWidth() * level.getSpawnpoint().y) + crypt(level.getLink()));
+                    //CREAZIONE TRANSIZIONE VERSO WARPZONE
+                    w.write(LevelUtils.encryptLevel(transitionToWarpzone, warpzone.getId(), -1));
+                    for (x = 0; x < transitionToWarpzone.getWidth(); x++)
+                        for (y = 0; y < 10; y++)
+                            w.write(CryptUtils.crypt(transitionToWarpzone.getTile(x, y).x + 8 * transitionToWarpzone.getTile(x, y).y));
+
+                    //CREAZIONE WARPZONE
+                    w.write(LevelUtils.encryptLevel(warpzone, transitionToLevel.getId(), -1));
+                    for (x = 0; x < warpzone.getWidth(); x++)
+                        for (y = 0; y < 10; y++)
+                            w.write(CryptUtils.crypt(warpzone.getTile(x, y).x + 8 * warpzone.getTile(x, y).y));
+
+                    //CREAZIONE TRANSIZIONE DA WARPZONE A LIVELLO
+                    w.write(LevelUtils.encryptLevel(transitionToLevel, level.getId(), -1));
+                    for (x = 0; x < transitionToLevel.getWidth(); x++)
+                        for (y = 0; y < 10; y++)
+                            w.write(CryptUtils.crypt(transitionToLevel.getTile(x, y).x + 8 * transitionToLevel.getTile(x, y).y));
+
+                    warpzoneIndex++;
+                }
+                //CREAZIONE TRANSIZIONE A LIVELLO SUCCESSIVO
+                MappedLevel transitionToNextLevel = createTransition(level, false);
+                w.write(LevelUtils.encryptLevel(transitionToNextLevel, levelIndex + 1 < levels.size() ? levels.get(levelIndex + 1).getId() : -1, -1));
+                for (x = 0; x < transitionToNextLevel.getWidth(); x++)
+                    for (y = 0; y < 10; y++)
+                        w.write(CryptUtils.crypt(transitionToNextLevel.getTile(x, y).x + 8 * transitionToNextLevel.getTile(x, y).y));
+                //SCRITTURA LIVELLO
+                w.write(LevelUtils.encryptLevel(level, transitionToNextLevel.getId(), transitionToWarpzoneId));
                 for (x = 0; x < level.getWidth(); x++)
                     for (y = 0; y < 10; y++)
-                        w.write(crypt(level.getTile(x, y).x + 8 * level.getTile(x, y).y));
+                        w.write(CryptUtils.crypt(level.getTile(x, y).x + 8 * level.getTile(x, y).y));
             }
 
             w.close();
         } catch (Exception e) {
             System.out.println("exportData: " + e.getMessage());
-
         }
-
     }
 
-    public void importLevel(File src) {
+    public void importLevel(BufferedReader reader) {
         try {
-            int x, y;
-            BufferedReader r;
-            MappedLevel level;
-            String line;
-            String[] subLine, ssubLine;
-
-            r = new BufferedReader(new FileReader(src));
-
-            level = new MappedLevel();
-            line = r.readLine();
-            subLine = line.split(";");
-            level.setWidth(Integer.parseInt(subLine[0]));
-            level.setSpawnpoint(Integer.parseInt(subLine[1]), Integer.parseInt(subLine[2]));
-            level.setLink(Integer.parseInt(subLine[3]));
-            for (x = 0; x < level.getWidth(); x++) {
-                line = r.readLine();
-                subLine = line.split(" ");
-                for (y = 0; y < 10; y++) {
-                    ssubLine = subLine[y].split(";");
-                    level.setTile(new Point(Integer.parseInt(ssubLine[0]), Integer.parseInt(ssubLine[1])), x, y);
-                }
+            if (state == 1) {
+                MappedLevel importedLevel = LevelUtils.readLevel(reader);
+                levels.set(currentLevel + currentWarpzone + 1, importedLevel);
             }
-            if (state == 1)
-                levels.set(currentLevel + currentWarpzone + 1, level);
-
-            r.close();
         } catch (Exception e) {
             System.out.println("importLevel: " + e.getMessage());
         }
@@ -476,40 +427,10 @@ public class Model {
     }
 
     private void loadLastProject() {
-        openProject(new File("temp.ddp"));
-    }
-
-    private static String toHex(int x) {
-        int i;
-        String[] values = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"};
-        StringBuilder ret;
-
-        ret = new StringBuilder();
-        for (i = 0; i < 8; i++) {
-            ret.insert(0, values[x % 16]);
-            x /= 16;
+        try {
+            openProject(new BufferedReader(new FileReader(new File("temp.ddp"))));
+        } catch (Exception e) {
+            System.out.println("loadLastProject: " + e.getMessage());
         }
-
-        return ret.toString();
     }
-
-    /*private int toDec(String x)
-    {
-    	int ret, i;
-    	
-    	ret = 0;
-    	for (i = 0; i < 8; i++)
-    		ret += (x.charAt(i) >= 65 && x.charAt(i) <= 70 ? (10 + (int)x.charAt(i) - 65) : Integer.parseInt("" + x.charAt(i))) * (int)Math.pow(16, (7 - i));
-    	
-    	return ret;
-    }*/
-    private String crypt(int x) {
-        return crypt(x, LV, PW);
-    }
-
-    private String crypt(int x, int lv, int pw) {
-        return toHex((x + lv) * pw);
-    }
-    /*private int decrypt(String x) { return decrypt(x, LV, PW); }
-    private int decrypt(String x, int lv, int pw) { return ((toDec(x) / pw) - lv); }*/
 }
