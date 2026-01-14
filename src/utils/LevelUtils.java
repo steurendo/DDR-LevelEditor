@@ -14,7 +14,6 @@ public class LevelUtils {
 
     public static MappedLevel readLevel(BufferedReader reader) throws Exception {
         int x, y;
-        BufferedReader r;
         MappedLevel level;
         String line;
         String[] subLine, ssubLine;

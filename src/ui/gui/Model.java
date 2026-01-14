@@ -341,8 +341,7 @@ public class Model {
 
             w = new BufferedWriter(new FileWriter(dst));
 
-            //HEADER
-            w.write(CryptUtils.crypt(levels.size()) + CryptUtils.crypt(warpzones.size()));
+            w.write(CryptUtils.crypt(levels.getFirst().getId()));
 
             //LEVELS
             for (int levelIndex = 0, warpzoneIndex = 0; levelIndex < levels.size(); levelIndex++) {
@@ -352,6 +351,7 @@ public class Model {
                     warpzone = warpzones.get(warpzoneIndex);
                     MappedLevel transitionToWarpzone = createTransition(warpzone, true);
                     MappedLevel transitionToLevel = createTransition(warpzone, false);
+                    transitionToWarpzoneId = transitionToWarpzone.getId();
 
                     //CREAZIONE TRANSIZIONE VERSO WARPZONE
                     w.write(LevelUtils.encryptLevel(transitionToWarpzone, warpzone.getId(), -1));
@@ -375,7 +375,7 @@ public class Model {
                 }
                 //CREAZIONE TRANSIZIONE A LIVELLO SUCCESSIVO
                 MappedLevel transitionToNextLevel = createTransition(level, false);
-                w.write(LevelUtils.encryptLevel(transitionToNextLevel, levels.get((levelIndex + 1) % levels.size()).getId(), -1));
+                w.write(LevelUtils.encryptLevel(transitionToNextLevel, levelIndex + 1 < levels.size() ? levels.get(levelIndex + 1).getId() : -1, -1));
                 for (x = 0; x < transitionToNextLevel.getWidth(); x++)
                     for (y = 0; y < 10; y++)
                         w.write(CryptUtils.crypt(transitionToNextLevel.getTile(x, y).x + 8 * transitionToNextLevel.getTile(x, y).y));
