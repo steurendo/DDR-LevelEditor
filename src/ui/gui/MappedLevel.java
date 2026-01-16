@@ -5,8 +5,8 @@ import utils.LevelUtils;
 import java.awt.Point;
 
 public class MappedLevel {
-    private int id;
-    private Point[][] map;
+    private final int id;
+    private final Point[][] map;
     private int width;
     private Point spawnpoint;
     private int link;
@@ -44,10 +44,6 @@ public class MappedLevel {
         return link;
     }
 
-    public void setMap(Point[][] value) {
-        map = value;
-    }
-
     public void setWidth(int value) {
         width = value;
     }
@@ -72,12 +68,27 @@ public class MappedLevel {
         map[locationX][locationY] = tile;
     }
 
-    public MappedLevel clone() {
-        MappedLevel clonedLevel = new MappedLevel();
-        clonedLevel.map = map.clone();
-        clonedLevel.width = width;
-        clonedLevel.spawnpoint = new Point(spawnpoint.x, spawnpoint.y);
-        clonedLevel.link = link;
-        return clonedLevel;
+    public Point getMostUsedTile() {
+        int[][] tilemapUsage = new int[8][7];
+        Point mostUsedTile = new Point();
+
+        // Inizializzo la tabella di conteggio tiles
+        for (int x = 0; x < 8; x++)
+            for (int y = 0; y < 7; y++)
+                tilemapUsage[x][y] = 0;
+
+        // Conteggio i tiles che compaiono nel livello
+        for (int x = 0; x < width; x++)
+            for (int y = 0; y < 10; y++)
+                if (map[x][y].x > 0 && map[x][y].y == 0 || map[x][y].x < 8 && map[x][y].y == 1)
+                    tilemapUsage[map[x][y].x][map[x][y].y]++;
+
+        // Cerco il tile più utilizzato
+        for (int x = 0; x < 8; x++)
+            for (int y = 0; y < 7; y++)
+                if (tilemapUsage[x][y] > tilemapUsage[mostUsedTile.x][mostUsedTile.y])
+                    mostUsedTile = new Point(x, y);
+
+        return mostUsedTile;
     }
 }
