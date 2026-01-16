@@ -19,7 +19,7 @@ public class Model {
 
     public Model() {
         try {
-            loadLastProject();
+            openProject(new BufferedReader(new FileReader("temp.ddp")));
         } catch (Exception e) {
             newEmptyProject();
         }
@@ -208,8 +208,8 @@ public class Model {
     }
 
     public void newEmptyProject() {
-        levels = new ArrayList<MappedLevel>();
-        warpzones = new ArrayList<MappedLevel>();
+        levels = new ArrayList<>();
+        warpzones = new ArrayList<>();
         currentLevel = -1;
         currentWarpzone = -1;
         state = 0;
@@ -322,11 +322,17 @@ public class Model {
 
     private MappedLevel createTransition(MappedLevel level, boolean warpzoneTransition) {
         try {
-            if (warpzoneTransition)
-                return LevelUtils.readLevel(new BufferedReader(new InputStreamReader(
-                        Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("transition-warpzone.ddl")))));
-            return LevelUtils.readLevel(new BufferedReader(new InputStreamReader(
-                    Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("transition-level.ddl")))));
+            String levelPath = warpzoneTransition ? "transition-warpzone.ddl" : "transition-level.ddl";
+            InputStream resourceStream = Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream(levelPath));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(resourceStream));
+            MappedLevel transitionLevel = LevelUtils.readLevel(reader);
+            Point mostFrequentTile = level.getMostUsedTile();
+            Point temporaryTile = new Point(1, 0);
+            for (int x = 0; x < level.getWidth(); x++)
+                for (int y = 0; y < 10; y++)
+                    if (transitionLevel.getTile(x, y).equals(temporaryTile))
+                        transitionLevel.setTile(mostFrequentTile, x, y);
+            return transitionLevel;
         } catch (Exception e) {
             System.out.println("createTransition: " + e.getMessage());
         }
@@ -423,14 +429,6 @@ public class Model {
             w.close();
         } catch (Exception e) {
             System.out.println("exportLevel: " + e.getMessage());
-        }
-    }
-
-    private void loadLastProject() {
-        try {
-            openProject(new BufferedReader(new FileReader(new File("temp.ddp"))));
-        } catch (Exception e) {
-            System.out.println("loadLastProject: " + e.getMessage());
         }
     }
 }
