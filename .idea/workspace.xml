@@ -11,7 +11,6 @@
   <component name="ChangeListManager">
     <list default="true" id="9b40d893-bd48-4fc2-9b34-9417fe25fd6e" name="Changes" comment="Transition levels' tiles are now based on the previous level ones">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/gui/MappedLevel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/gui/MappedLevel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ui/gui/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/gui/Model.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -48,6 +47,9 @@
 }</component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
@@ -117,6 +119,13 @@
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.30387.90" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -224,7 +233,15 @@
       <option name="project" value="LOCAL" />
       <updated>1768430265331</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Transition levels' tiles are now based on the previous level ones">
+      <option name="closed" value="true" />
+      <created>1768597213225</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1768597213225</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
