@@ -339,6 +339,18 @@ public class Model {
         return new MappedLevel();
     }
 
+    private MappedLevel createEndgame() {
+        try {
+            String levelPath = "endgame.ddl";
+            InputStream resourceStream = Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream(levelPath));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(resourceStream));
+            return LevelUtils.readLevel(reader);
+        } catch (Exception e) {
+            System.out.println("createTransition: " + e.getMessage());
+        }
+        return new MappedLevel();
+    }
+
     public void exportData(File dst) {
         try {
             int x, y, transitionToWarpzoneId;
@@ -348,6 +360,13 @@ public class Model {
             w = new BufferedWriter(new FileWriter(dst));
 
             w.write(CryptUtils.crypt(levels.getFirst().getId()));
+
+            //SCRITTURA LIVELLO FINALE
+            MappedLevel endgameLevel = createEndgame();
+            w.write(LevelUtils.encryptLevel(endgameLevel, -1, -1));
+            for (x = 0; x < endgameLevel.getWidth(); x++)
+                for (y = 0; y < 10; y++)
+                    w.write(CryptUtils.crypt(endgameLevel.getTile(x, y).x + 8 * endgameLevel.getTile(x, y).y));
 
             //LEVELS
             for (int levelIndex = 0, warpzoneIndex = 0; levelIndex < levels.size(); levelIndex++) {
@@ -381,7 +400,8 @@ public class Model {
                 }
                 //CREAZIONE TRANSIZIONE A LIVELLO SUCCESSIVO
                 MappedLevel transitionToNextLevel = createTransition(level, false);
-                w.write(LevelUtils.encryptLevel(transitionToNextLevel, levelIndex + 1 < levels.size() ? levels.get(levelIndex + 1).getId() : -1, -1));
+                int nextLevelId = levelIndex + 1 < levels.size() ? levels.get(levelIndex + 1).getId() : endgameLevel.getId();
+                w.write(LevelUtils.encryptLevel(transitionToNextLevel, nextLevelId, -1));
                 for (x = 0; x < transitionToNextLevel.getWidth(); x++)
                     for (y = 0; y < 10; y++)
                         w.write(CryptUtils.crypt(transitionToNextLevel.getTile(x, y).x + 8 * transitionToNextLevel.getTile(x, y).y));
